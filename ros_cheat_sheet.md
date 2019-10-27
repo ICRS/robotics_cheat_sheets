@@ -1,5 +1,20 @@
 ## ROS
 
+## TL:DR
+
+Here's a collection of useful ROS packages that do the stuff you thought you were going to have to program yourself - at least do the basic tutorials first though.
+
+The real cheat sheet.
+
+ - [Extended Kalman Filter](http://wiki.ros.org/robot_pose_ekf) (sensor fusion, e.g. IMU + Odometry + ...)
+ - [Navigation](http://wiki.ros.org/navigation) (...)
+ - [Hokuyo](http://wiki.ros.org/urg_node) (Laser scanner driver)
+ - [ROS Control](http://wiki.ros.org/ros_control) (PID controllers that work both on hardware and simulation. Documentation is questionable)
+ - [Controllers](http://wiki.ros.org/ros_controllers) (Controllers available in ROS Control)
+ - [rviz](http://wiki.ros.org/rviz) (visualising data)
+ - [MoveIt!](https://moveit.ros.org/) (robot arms etc.)
+ - [Camera Callibration](http://wiki.ros.org/camera_calibration) (...)
+
 ### Overview
 
 Robot Operating System (ROS) is a software framework for robot software development. It has considerable support with many useful packages readily available online. It can be run on Unix-based platforms like Ubuntu on devices from a Raspberry Pi to a normal PC. It enables visualisation of the nodes and processes, which is very helpful when designing and debugging the robot software. Simulation of the robot's operation and actions is also available through ROS (with Gazebo). Most ROS programs are programmed with C++ and/or Python but theoretically the framework is language-independent. For more details, documentation and tutorials check the [ROS Wiki](http://wiki.ros.org/).
@@ -159,7 +174,7 @@ Here's a brief run-down of the commonly used controllers:
      - **JointPositionController**: Tries to control the joint position by sending it a target position
  - **diff_drive_controller**: Tries to control a differential drive robot by sending the robot wheels velocity commands. Also calculates the robot's odometry.
 
-The idea is that these will output a position, velocity or effort that you then pass to your MCU. That then executes a control loop to control the motor with the ros_control command as the input. E.g. using effort control the control loop could simply be `set PWM to command_effort/max_command_effort`, while a velocity command could feed into a PID loop in the MCU.
+The idea is that these will output a position, velocity or effort that you then pass to your MCU. That then executes a control loop to control the motor with the ros_control command as the input. E.g. using effort control the control loop could simply be `set PWM to command_effort/max_command_effort`, while a velocity command could feed into another PID loop in the MCU.
 
 ### Navigation Stack
 
