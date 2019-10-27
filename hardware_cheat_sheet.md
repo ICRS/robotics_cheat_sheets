@@ -26,7 +26,7 @@ Typically we'll use a RPi for high level control (ROS, computer vision, communic
 
 ##### ROS on RPi
 
-So ROS supposedly _can_ run on Raspbian, but it's a real pain to setup. I really recommend just installing Ubuntu, Ubuntu Core or Ubuntu Mate and installing ROS on that.
+So ROS supposedly _can_ run on Raspbian, but it's a real pain to setup. I really recommend just installing Ubuntu, Ubuntu Core or Ubuntu Mate and installing ROS on that. N.B. Ubuntu Core can be a bit of a mess to work with as you need to package everything as a snap to use it properly.
 
 ### Motor Types
 
@@ -195,8 +195,8 @@ C++ Code
 #include <sensor_msgs/LaserScan.h>
 
 // We're using Eigen for vectors.
-// We're probably going to need to for some funky maths later anyway if
-// this node process laser scan data.
+// We're probably going to need it for some funky maths later anyway if
+// this node processes laser scan data.
 #include <Eigen/Geometry> 
 
 // Ros callback function
@@ -229,13 +229,13 @@ Ooh boy you want to do some computer vision? Then you're gonna need a camera. Sp
 
 In terms of funky things like un-distorting cameras, there's a [ROS Package](http://wiki.ros.org/camera_calibration) which can find your callibration parameters. Otherwise [OpenCV](https://opencv.org/) also has some [good stuff](https://docs.opencv.org/2.4/doc/tutorials/calib3d/camera_calibration/camera_calibration.html).
 
-You'll probably want to use OpenCV with this, this cheat sheet is long enough as it is, but pro tip: use [HSV not RGB](https://docs.opencv.org/trunk/df/d9d/tutorial_py_colorspaces.html) ;)
+You'll probably want to use OpenCV with this, this cheat sheet is long enough as it is so we won't cover much. Pro tip: use [HSV not RGB](https://docs.opencv.org/trunk/df/d9d/tutorial_py_colorspaces.html) ;)
 
 ### IMUs
 
 Inertial Measurement Units are great for integrating with odometry in an EKF (more later). They contain an accelerometer, gyroscope and magnetometer usually, and some fancy ones will even do the sensor fusion on board. Ultimately this means you can measure your orientation and acceleration.
 
-These guys are _noisy_ so don't try and integrate acceleration twice to get position or something. It won't work. Guaranteed.
+These guys are _noisy_ so don't try and integrate acceleration twice to get position or something. It won't work. Guaranteed. Unless you're willing to drop a few thousand pounds on some state of the art sensor.
 
 Sparkfun has a good guide on [buying IMUs](https://www.sparkfun.com/pages/accel_gyro_guide).
 
